@@ -1,6 +1,5 @@
 # dbt Exercise Instructions #
-- Let's jump into a ELT demo using Airbyte and dbt. Remember the insurance exercise where we took an insurance transaction and created a dimensional model based on the given business process and transaction? We decided on the below dimensional model:
-
+- Let's jump into an ELT demo using Airbyte and dbt. Remember the insurance exercise where we took an insurance transaction and created a dimensional model based on the given business process and transaction? We decided on dimensional model named insurancedimensionalmodel.png
 
 
 - Now, we are going to use a semi-normalized transactional database given to us by Sarah's insurance company. Let's work through an ELT process for Sarah's insurance company using Airbyte and dbt. 
