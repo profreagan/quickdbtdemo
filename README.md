@@ -1,2 +1,0 @@
-# quickdbtdemo
-quick dbt demo
