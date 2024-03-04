@@ -85,7 +85,7 @@ sources:
 }}
 
 SELECT
-{{ dbt_utils.generate_surrogate_key(['agentid']) }} as agent_key,
+{{ dbt_utils.generate_surrogate_key(['agentid', 'phone']) }} as agent_key,
 agentid,
 firstname,
 lastname,
@@ -109,7 +109,7 @@ FROM {{ source('insurance_landing', 'agents') }}
 
 
 select
-{{ dbt_utils.generate_surrogate_key(['customerid']) }} as customer_key,
+{{ dbt_utils.generate_surrogate_key(['customerid', 'firstname']) }} as customer_key,
 customerid,
 firstname,
 lastname,
@@ -136,7 +136,7 @@ FROM {{ source('insurance_landing', 'customers') }}
 
 
 select
-{{ dbt_utils.generate_surrogate_key(['policyid']) }} as policy_key,
+{{ dbt_utils.generate_surrogate_key(['policyid', 'policytype']) }} as policy_key,
 policyid,
 policytype
 FROM {{ source('insurance_landing', 'policies') }}
@@ -180,7 +180,6 @@ from cte_date
 packages:
   - package: calogica/dbt_date
     version: [">=0.9.0", "<0.10.0"]
-    # <see https://github.com/calogica/dbt-date/releases/latest> for the latest version tag
 
 - Then run `dbt deps`
 
