@@ -93,7 +93,7 @@ email,
 phone
 FROM {{ source('insurance_landing', 'agents') }}
 ```
-- The dbt_date macro comes from the below package. Create a packages.yml file in the same folder as your dbt_project.yml file. Paste this in the packages.yml file:
+- The dbt_utils macro comes from the below package. Create a packages.yml file in the same folder as your dbt_project.yml file. Paste this in the packages.yml file:
 ```
 packages:
     - package: dbt-labs/dbt_utils
