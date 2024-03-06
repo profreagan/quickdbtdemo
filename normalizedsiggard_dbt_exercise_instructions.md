@@ -93,7 +93,12 @@ email,
 phone
 FROM {{ source('insurance_landing', 'agents') }}
 ```
+- The dbt_date macro comes from the below package. Create a packages.yml file in the same folder as your dbt_project.yml file. Paste this in the packages.yml file:
 
+packages:
+    - package: dbt-labs/dbt_utils
+    version: 1.1.1
+    
 - Save the file, after you have done that, you can go to your terminal and type `dbt run -m dim_agent` to build the model.
     - Go to Snowflake to see the newly created table!
 
@@ -144,9 +149,7 @@ FROM {{ source('insurance_landing', 'policies') }}
 
 - Save the file, after you have done that, you can go to your terminal and type `dbt run -m dim_policy` to build the model.
     - Go to Snowflake to see the newly created table!
-- REAGAN IF YOU USE THE DBT_UTILS PACKAGE THEN MAKE SURE YOU ADD THIS TO THE PACKAGES FILE
-  - package: dbt-labs/dbt_utils
-    version: 1.1.1
+
 
 #### dim_date ####
 - Create a new file inside of the insurance directory called `dim_date.sql`
@@ -177,7 +180,6 @@ from cte_date
 
 - The dbt_date macro comes from the below package. Create a packages.yml file in the same folder as your dbt_project.yml file. Paste this in the packages.yml file:
 
-packages:
   - package: calogica/dbt_date
     version: [">=0.9.0", "<0.10.0"]
 
