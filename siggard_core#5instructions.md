@@ -12,8 +12,8 @@
 ![alt text](oliverdimmodel.png)
 
 - Oliver’s transaction data is stored in the 5360_Oliver database. Access this database by using the following credentials:
-     - a.	Username: 5360_student
-     - b.	Password: datawarehousing
+     - Username: 5360_student
+     - Password: datawarehousing
 
 
 ## Assignment ##
