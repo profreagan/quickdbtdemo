@@ -78,26 +78,26 @@
 
 
 #### dim customer ####
-- Create a new file inside of the oliver directory called `dim_customer.sql`
+- Create a new file inside of the oliver directory called `oliver_dim_customer.sql`
 - Populate the code that we will use in this file below: 
 ```
 
 ```
 
-- Save the file, after you have done that, you can go to your terminal and type `dbt run -m dim_customer` to build the model.
+- Save the file, after you have done that, you can go to your terminal and type `dbt run -m oliver_dim_customer` to build the model.
     - Go to Snowflake to see the newly created table!
 
 #### dim date ####
-- Create a new file inside of the oliver directory called `dim_date.sql`
+- Create a new file inside of the oliver directory called `oliver_dim_date.sql`
 - Populate the code that we will use in this file below: 
 ```
 
 ```
 
-- Save the file, after you have done that, you can go to your terminal and type `dbt run -m dim_date` to build the model. Go to Snowflake to see the newly created table!
+- Save the file, after you have done that, you can go to your terminal and type `dbt run -m oliver_dim_date` to build the model. Go to Snowflake to see the newly created table!
 
 #### dim_employee ####
-- Create a new file inside of the oliver directory called `dim_employee.sql`
+- Create a new file inside of the oliver directory called `oliver_dim_employee.sql`
 - Populate the code that we will use in this file below: 
 ```
 
@@ -106,7 +106,7 @@
 - Save the file and build the model. Go to Snowflake to see the newly created table! 
 
 #### dim product ####
-- Create a new file inside of the oliver directory called `dim_product.sql`
+- Create a new file inside of the oliver directory called `oliver_dim_product.sql`
 - Populate the code that we will use in this file below: 
 
 
@@ -118,7 +118,7 @@
 
 
 #### dim store ####
-- Create a new file inside of the oliver directory called `dim_store.sql`
+- Create a new file inside of the oliver directory called `oliver_dim_store.sql`
 - Populate the code that we will use in this file below: 
 ```
 
