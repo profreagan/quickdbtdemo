@@ -9,7 +9,7 @@
 
 ## Background & Data ##
 Oliver’s sweets and drinks serves a variety of products, including coffee, a variety of sodas, popcorn, and other tasty treats. Oliver’s currently has a transactional database system to track all store purchases across their 10 stores. They are now interested in developing a data warehouse using dimensional modeling (star schema) to improve their data analysis capabilities.  You will be modeling the point-of-sale business process at Oliver’s. You have already created a sample dimensional model and populated it for Oliver’s by uploading files of data. Now, after creating the dimensional model and showing it to Oliver’s data team, they have settled on the below dimensional model design. 
-![alt text](oliverdimmodel-1.png)
+![alt text](oliverdimmodel.png)
 
 Oliver’s transaction data is stored in the 5360_Oliver database. Access this database by using the following credentials:
 a.	Username: 5360_student
