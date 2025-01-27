@@ -58,10 +58,15 @@
     - Once it's done, go to Snowflake and verify that you see data in the landing database
 
 ### Transform (dbt) ###
-- Open VSCode
-- File > Open > Select your project (lastname_DW)
-- On the top bar of the application, select Terminal > New Terminal
-    - This will open a terminal in the directory of your project within VSCode
+- Login to dbt Cloud
+- Click Develop > Cloud IDE
+- Before making any changes, we need to open an new git branch.
+    - Go to the repository for your project in GitHub
+    - Create a new branch by clicking branches > new branch
+        - Name the branch `core5`
+- Go back to the dbt Cloud IDE
+    - Click Change branch > select your new branch and click `Checkout`
+
 - Right click on the models directory and create a new folder inside of it. (Be careful not to create it inside of the example directory.)
 - Call this new folder `oliver`
 - Right click on oliver and create a new file. Name this file `_src_oliver.yml`
@@ -70,11 +75,6 @@
 ```
 
 ```
-
-- If you need to make any changes to your Snowflake information in your dbt project you can change it by going to your dbt profile.yml file. You may need to change the schema. 
-    - On a mac, this is located under your user directory. You have to click Shift + command + . in order to see hidden folders. The .dbt folder will appear and inside is profiles.yml
-    - On Windows, it's just in the user directory under the .dbt folder and the profiles.yml is inside.
-    - Once you have found the profiles.yml file you can open in a text editor, change the needed parameters and save the file. 
 
 
 #### dim customer ####
@@ -150,7 +150,7 @@
 
 ## Create a semantic layer model (2 points of EC!)
 - Create a model that can query from the data warehouse we just built and reference upstream models.
-- Create a new file called `sem_sales.sql` inside of the oliver directory.
+- Create a new file called `sales.sql` inside of the oliver directory.
 - Basically, your code will create a new table that will be a semantic layer that is easy for consumption. The table should include key information that an analyst could easily pull from to run quick analysis. 
 - This model should use 'ref' instead of source in the from statements. This will allow dbt to build lineage dag of the model dependencies:
 - Populate the code that we will use in this file below: 
@@ -158,4 +158,22 @@
 
 ```
 
-- In order to view lineage, the dbt power user extension must be installed. Click on the Lineage tab in vscode (down by the terminal on the bottom), if you are inside the sem_claims.sql model, you should be able to see lineage for that model. View the lineage for the other files in the model as well. 
+## View Lineage and Generate Docs ##
+- View Lineage for your semantic layer model by clicking on the model in the file explorer and clicking lineage on the bottom window.
+    - If you did not create the semantic layer model, then select your fact model.
+- Submit a screenshot of the DAG.
+- Run `dbt docs generate` in the command line
+- Click the docs icon to the right of the `Change branch` link.
+- Select the claims model from the project explorer on the left.
+
+## Create a Pull Request on GitHub for the changes you have made ##
+- Click Save on any files that you have made changes in.
+- Click `Commit and Sync`
+- Type a commit message explaining the changes you've made. Click `Commit Changes`.
+- Click `Create a pull request on GitHub`
+    - You will be redirected to GitHub
+- Review your changes and click `Create pull request`
+- Type a description about the changes you are proposing to the project.
+- Click `Create Pull Request`
+- Before merging the Pull Request, you need to get 1 reviewer from someone in the class.
+- Copy the link for this page from your browser and link it to the discussion post. Ask for someone to review your pull request. Once someone has appoved your pull request, you can merge it into the main branch by clicking `Merge pull request`.
