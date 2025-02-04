@@ -47,7 +47,15 @@
 ### Transform (dbt) ###
 - Login to dbt Cloud
 - Click Develop > Cloud IDE
-- Before making any changes, we need to open a new git branch.
+- Click Initialize dbt project
+    - All of the necessary dbt files and folders will be created
+- Click Commit and sync
+- Click Create Pull Request (you will be taken to GitHub for the rest of this)
+- Click ‘New Pull Request’
+- Click ‘Create Pull Request’
+- Click ‘Merge Pull Request’
+    - Confim Merge
+- Before making any changes, we need to open an new git branch.
     - Go to the repository for your project in GitHub
     - Create a new branch by clicking branches > new branch
         - Name the branch `dbt-exercise`
