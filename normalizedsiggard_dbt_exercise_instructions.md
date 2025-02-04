@@ -13,6 +13,7 @@
 - Open up a browser and go to http://localhost:8000. It can take a while for the Airbyte service to start, so don't be surprised if it takes ~10 minutes.
     - Username: airbyte
     - Password: password
+- Click `New Connection`
 - Click `Set up a new source`
 - When defining a source, select `Microsoft SQL Server (MSSQL)`
     - Host: `stairway.usu.edu`
@@ -23,7 +24,7 @@
 - Select `Scan Changes with User Defined Cursor`
 - Click `Set up source`
     - Airbyte will run a connection test on the source to make sure it is set up properly
-- Create a schema in your firstnamelastname database named `Insurance` and ensure you have a data warehouse named `lastname_wh`
+- Create a schema in your firstnamelastname Snowflake database named `Insurance` and ensure you have a data warehouse named `lastname_wh`
 
 - Once Airbyte has run the connection test successfully, you will pick a destination, select `Pick a destination`.
 - Find and click on `Snowflake`
