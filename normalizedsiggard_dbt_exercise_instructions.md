@@ -26,16 +26,16 @@
     - Airbyte will run a connection test on the source to make sure it is set up properly
 - Create a schema in your firstnamelastname Snowflake database named `Insurance` and ensure you have a data warehouse named `lastname_wh`
 
-- Once Airbyte has run the connection test successfully, you will pick a destination, select `Pick a destination`.
+- Once Airbyte has run the connection test successfully, you will pick a destination, select `Pick a destination`. Select `Set up a new destination`.
 - Find and click on `Snowflake`
-    - Host: `https://rbb67081.snowflakecomputing.com` 
+    - Host: `https://gyb94141.snowflakecomputing.com` 
     - Role: `TRAINING_ROLE` 
     - Warehouse: `lastname_WH` 
     - Database: `firstnamelastname` 
-    - Schema: `INSURANCE` (create this schema in your firstnamelastname database)
-    - Username: 
+    - Schema: `INSURANCE` 
+    - Username: [yoursnowflakeusername]
     - Authorization Method: `Username and Password`
-    - Password: 
+    - Password: [yoursnowflakepassword]
     - Click `Set up destination`
 - Once the connection test passes, it will pull up the new connection window
     - Change schedule type to `Manual`
@@ -47,7 +47,7 @@
 ### Transform (dbt) ###
 - Login to dbt Cloud
 - Click Develop > Cloud IDE
-- Before making any changes, we need to open an new git branch.
+- Before making any changes, we need to open a new git branch.
     - Go to the repository for your project in GitHub
     - Create a new branch by clicking branches > new branch
         - Name the branch `dbt-exercise`
