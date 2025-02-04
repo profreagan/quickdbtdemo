@@ -44,10 +44,44 @@
     - Once it's done, go to Snowflake and verify that you see data in the landing database
 
 ### Transform (dbt) ###
-- Open VSCode
-- File > Open > Select your project (lastname_DW)
-- On the top bar of the application, select Terminal > New Terminal
-    - This will open a terminal in the directory of your project within VSCode
+- Login to dbt Cloud
+- Click Develop > Cloud IDE
+- Before making any changes, we need to open an new git branch.
+    - Go to the repository for your project in GitHub
+    - Create a new branch by clicking branches > new branch
+        - Name the branch `dbt-exercise`
+- Go back to the dbt Cloud IDE
+    - Click Change branch > select your new branch and click `Checkout`
+- Right click on the macros directory and create a new file called `generate_schema_name.sql`. This macro will allow us to use custom schemas when we create models.
+    - Copy and paste the following code into the newly created macro file:
+```
+{% macro generate_schema_name(custom_schema_name, node) -%}
+
+    {%- set default_schema = target.schema -%}
+    {%- if custom_schema_name is none -%}
+
+        {{ default_schema }}
+
+    {%- else -%}
+
+        {{ custom_schema_name | trim }}
+
+    {%- endif -%}
+
+{%- endmacro %}
+```
+
+- Create a packages.yml file in the same folder as your dbt_project.yml file. Paste this in the packages.yml file:
+```
+packages:
+  - package: dbt-labs/dbt_utils
+    version: 1.1.1
+
+  - package: calogica/dbt_date
+    version: 0.9.1
+```  
+- Save the file, after you have done that, you can go to your terminal and type `dbt deps` to install dbt dependencies
+
 - Right click on the models directory and create a new folder inside of it. (Be careful not to create it inside of the example directory.)
 - Call this new folder `insurance`
 - Right click on insurance and create a new file. Name this file `_src_insurance.yml`
@@ -85,7 +119,7 @@ sources:
 }}
 
 SELECT
-{{ dbt_utils.generate_surrogate_key(['agentid', 'phone']) }} as agent_key,
+agentid as agent_key,
 agentid,
 firstname,
 lastname,
@@ -93,14 +127,7 @@ email,
 phone
 FROM {{ source('insurance_landing', 'agents') }}
 ```
-- The dbt_utils macro comes from the below package. Create a packages.yml file in the same folder as your dbt_project.yml file. Paste this in the packages.yml file:
-```
-packages:
-    - package: dbt-labs/dbt_utils
-    version: 1.1.1
-```  
-- Save the file, after you have done that, you can go to your terminal and type `dbt run -m dim_agent` to build the model.
-    - Go to Snowflake to see the newly created table!
+- Save the file and run `dbt build --select dim_agent` in the terminal to build the model.
 
 #### dim customer ####
 - Create a new file inside of the insurance directory called `dim_customer.sql`
@@ -114,7 +141,7 @@ packages:
 
 
 select
-{{ dbt_utils.generate_surrogate_key(['customerid', 'firstname']) }} as customer_key,
+customerid as customer_key,
 customerid,
 firstname,
 lastname,
@@ -141,7 +168,7 @@ FROM {{ source('insurance_landing', 'customers') }}
 
 
 select
-{{ dbt_utils.generate_surrogate_key(['policyid', 'policytype']) }} as policy_key,
+policyid as policy_key,
 policyid,
 policytype
 FROM {{ source('insurance_landing', 'policies') }}
@@ -218,7 +245,7 @@ INNER JOIN {{ ref('dim_date') }} d ON d.date_day = c.ClaimDate
 
 - If for some reason you need to run all files then you can run: `dbt run -m insurance`.
 
-#### schema yaml file ####
+#### Model Attributes YAML file ####
 - Create a new file inside the insurance directory called `_schema_insurance.yml`
 - This file contains metadata about the models you build. It is not required, but highly encouraged by dbt to document your models. It's a lot of tedious work so doesn't seem super necessary for this exercise, but building the file is still a good habit to get into.
 - Structure the file just like the following code:
@@ -240,5 +267,23 @@ models:
 
 ## Create a semantic layer model (time permitting)
 - Create a model that can query from the data warehouse we just built and reference upstream models.
-- Create a new file called `sem_claims.sql` inside of the insurance directory.
-- In order to view lineage, the dbt power user extension must be installed. Click on the Lineage tab in vscode (down by the terminal on the bottom), if you are inside the sem_claims.sql model, you should be able to see lineage for that model. View the lineage for the other files in the model as well. 
+- Create a new file called `claims.sql` inside of the insurance directory.
+
+## View Lineage and Generate Docs ##
+- View Lineage for your semantic layer model by clicking on the model in the file explorer and clicking lineage on the bottom window.
+- Submit a screenshot of the DAG.
+- Run `dbt docs generate` in the command line
+- Click the docs icon to the right of the `Change branch` link.
+- Select the claims model from the project explorer on the left.
+
+## Create a Pull Request on GitHub for the changes you have made ##
+- Click Save on any files that you have made changes in.
+- Click `Commit and Sync`
+- Type a commit message explaining the changes you've made. Click `Commit Changes`.
+- Click `Create a pull request on GitHub`
+    - You will be redirected to GitHub
+- Review your changes and click `Create pull request`
+- Type a description about the changes you are proposing to the project.
+- Click `Create Pull Request`
+- Before merging the Pull Request, you need to get 1 reviewer from someone in the class.
+- Copy the link for this page from your browser and link it to the discussion post. Ask for someone to review your pull request. Once someone has appoved your pull request, you can merge it into the main branch by clicking `Merge pull request`.
