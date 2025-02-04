@@ -50,17 +50,8 @@
 - Click Initialize dbt project
     - All of the necessary dbt files and folders will be created
 - Click Commit and sync
-- Click Create Pull Request (you will be taken to GitHub for the rest of this)
-- Click ‘New Pull Request’
-- Click ‘Create Pull Request’
-- Click ‘Merge Pull Request’
-    - Confim Merge
-- Before making any changes, we need to open an new git branch.
-    - Go to the repository for your project in GitHub
-    - Create a new branch by clicking branches > new branch
-        - Name the branch `dbt-exercise`
-- Go back to the dbt Cloud IDE
-    - Click Change branch > select your new branch and click `Checkout`
+- Click 'Create New Branch'
+    - Name the branch `dbt-exercise`
 - Right click on the macros directory and create a new file called `generate_schema_name.sql`. This macro will allow us to use custom schemas when we create models.
     - Copy and paste the following code into the newly created macro file:
 ```
