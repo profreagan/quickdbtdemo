@@ -259,14 +259,4 @@ models:
 - Click the docs icon to the right of the `Change branch` link.
 - Select the claims model from the project explorer on the left.
 
-## Create a Pull Request on GitHub for the changes you have made ##
-- Click Save on any files that you have made changes in.
-- Click `Commit and Sync`
-- Type a commit message explaining the changes you've made. Click `Commit Changes`.
-- Click `Create a pull request on GitHub`
-    - You will be redirected to GitHub
-- Review your changes and click `Create pull request`
-- Type a description about the changes you are proposing to the project.
-- Click `Create Pull Request`
-- Before merging the Pull Request, you need to get 1 reviewer from someone in the class.
-- Copy the link for this page from your browser and link it to the discussion post. Ask for someone to review your pull request. Once someone has appoved your pull request, you can merge it into the main branch by clicking `Merge pull request`.
+
