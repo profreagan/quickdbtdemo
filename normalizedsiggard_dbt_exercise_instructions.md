@@ -5,44 +5,28 @@
 
 - Now, we are going to use a semi-normalized transactional database given to us by Sarah's insurance company. Let's work through an ELT process for Sarah's insurance company using Airbyte and dbt. 
 ### Extract and Load (Airbyte) ###
-- Ensure that you are connected to the University VPN
-- Open the Docker application
-- Start Airbyte by opening a terminal and running the following (you may be able to just click the local host link below instead of running the following):
-``` cd airbyte ```
-``` ./run-ab-platform.sh ```
-- Open up a browser and go to http://localhost:8000. It can take a while for the Airbyte service to start, so don't be surprised if it takes ~10 minutes.
-    - Username: airbyte
-    - Password: password
-- Click `New Connection`
-- Click `Set up a new source`
-- When defining a source, select `Microsoft SQL Server (MSSQL)`
-    - Host: `stairway.usu.edu`
-    - Port: `1433`
-    - Database: `5360_insurance2`
-    - Username: `5360_student`
-    - Password: `datawarehousing` (you'll need to click the dropdown for optional fields)
-- Select `Scan Changes with User Defined Cursor`
-- Click `Set up source`
-    - Airbyte will run a connection test on the source to make sure it is set up properly
-- Create a schema in your firstnamelastname Snowflake database named `Insurance` and ensure you have a data warehouse named `lastname_wh`
-
-- Once Airbyte has run the connection test successfully, you will pick a destination, select `Pick a destination`. Select `Set up a new destination`.
-- Find and click on `Snowflake`
-    - Host: `https://gyb94141.snowflakecomputing.com` 
-    - Role: `TRAINING_ROLE` 
-    - Warehouse: `lastname_WH` 
-    - Database: `firstnamelastname` 
-    - Schema: `INSURANCE` 
-    - Username: [yoursnowflakeusername]
-    - Authorization Method: `Username and Password`
-    - Password: [yoursnowflakepassword]
-    - Click `Set up destination`
-- Once the connection test passes, it will pull up the new connection window
-    - Change schedule type to `Manual`
-    - Under `Activate the streams you want to sync`, click the button next to each table.
-    - Click Set up connection
-    - Click `Sync now`
-    - Once it's done, go to Snowflake and verify that you see data in the landing database
+- Sign into fivetran
+- Click on 'Connections'
+    - Click 'Add Connection'
+- Search for and select 'Amazon RDS for PostgreSQL'
+- Select the destination you previously set up for Snowflake
+- Set the Destination schema prefix to `insurance`
+- Set the Host to `database-1.c3ckkcekkkxp.us-east-1.rds.amazonaws.com`
+- Set the user to `fivetran_usr`
+- Set the password to `dw_fivetran`
+- Set the database to `insurance`
+- Set Update Method to 'Detect Changes via Fivetran Teleport Sync'
+- Click 'Save & Test'
+- Click 'Continue' even if it says 'XMIN extensions not enabled'
+- When you get to the Select Data to Sync page, make sure that the following 4 tables are selected and click 'Save & Continue':
+    - agents
+    - claims
+    - customers
+    - policies
+- Choose to allow all changes
+- Click 'Sync Now' in the top right corner
+- Wait for the sync to finish, login to Snowflake, check to see if you have a new schema in your database called `insurance_dw_source`
+    - Confirm that the tables created and that they have data
 
 ### Transform (dbt) ###
 - Login to dbt Cloud
@@ -50,17 +34,8 @@
 - Click Initialize dbt project
     - All of the necessary dbt files and folders will be created
 - Click Commit and sync
-- Click Create Pull Request (you will be taken to GitHub for the rest of this)
-- Click ‘New Pull Request’
-- Click ‘Create Pull Request’
-- Click ‘Merge Pull Request’
-    - Confim Merge
-- Before making any changes, we need to open an new git branch.
-    - Go to the repository for your project in GitHub
-    - Create a new branch by clicking branches > new branch
-        - Name the branch `dbt-exercise`
-- Go back to the dbt Cloud IDE
-    - Click Change branch > select your new branch and click `Checkout`
+- Click 'Create New Branch'
+    - Name the branch `dbt-exercise`
 - Right click on the macros directory and create a new file called `generate_schema_name.sql`. This macro will allow us to use custom schemas when we create models.
     - Copy and paste the following code into the newly created macro file:
 ```
@@ -102,9 +77,8 @@ version: 2
 sources:
   - name: insurance_landing
     database: firstnamelastname
-    schema: insurance
+    schema: insurance_dw_source
     tables:
-      - name: agentpolicy
       - name: agents
       - name: claims
       - name: customers
