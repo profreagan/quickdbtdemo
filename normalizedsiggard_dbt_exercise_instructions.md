@@ -4,7 +4,7 @@
 ![alt text](insurancedimensionalmodel.png)
 
 - Now, we are going to use a semi-normalized transactional database given to us by Sarah's insurance company. Let's work through an ELT process for Sarah's insurance company using Airbyte and dbt. 
-### Extract and Load (Airbyte) ###
+### Extract and Load (FiveTran) ###
 - Sign into fivetran
 - Click on 'Connections'
     - Click 'Add Connection'
