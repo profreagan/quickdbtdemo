@@ -85,11 +85,6 @@ sources:
       - name: policies
 ```
 
-- If you need to make any changes to your Snowflake information in your dbt project you can change it by going to your dbt profile.yml file. You may need to change the schema. 
-    - On a mac, this is located under your user directory. You have to click Shift + command + . in order to see hidden folders. The .dbt folder will appear and inside is profiles.yml
-    - On Windows, it's just in the user directory under the .dbt folder and the profiles.yml is inside.
-    - Once you have found the profiles.yml file you can open in a text editor, change the needed parameters and save the file. 
-
 
 #### dim agent ####
 - Create a new file inside of the insurance directory called `dim_agent.sql`
