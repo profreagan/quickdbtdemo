@@ -4,8 +4,7 @@
 - For context, Core #3, #4, and #5 all build upon each other. 
      - Core #3: You created a draft dimensional model in LucidChart based on a given business process and transaction. 
      - Core #4: You will populate your draft dimensional model (and act upon any feedback received) from a dataset provided to you via a file. 
-     - Core #5: You will Airbyte to pull in all of Oliver’s relational database data from SQL Server and then use dbt to transform and populate our final dimensional model. 
--HINT! The dbt exercise we completed in class will be EXTREMELY helpful as you complete the assignment. 
+     - Core #5: You will use FiveTran to pull in all of Oliver’s relational database data from an Amazon RDS Postgres instance and then use dbt to transform and populate our final dimensional model. HINT! The dbt exercise we completed in class will be EXTREMELY helpful as you complete the assignment. 
 
 ## Background & Data ##
 - Oliver’s sweets and drinks serves a variety of products, including coffee, a variety of sodas, popcorn, and other tasty treats. Oliver’s currently has a transactional database system to track all store purchases across their 10 stores. They are now interested in developing a data warehouse using dimensional modeling (star schema) to improve their data analysis capabilities.  You will be modeling the point-of-sale business process at Oliver’s. You have already created a sample dimensional model and populated it for Oliver’s by uploading files of data. Now, after creating the dimensional model and showing it to Oliver’s data team, they have settled on the below dimensional model design. 
@@ -18,7 +17,7 @@
 
 ## Assignment ##
 - Now, we are going to use a semi-normalized transactional database given to us by Oliver's. You are very familiar with this dataset! You are going to create an ELT process for Oliver's using Airbyte & dbt. Download this markdown file and open it in VSCode, then populate the empty "code" boxes below with the code you use to complete this assignment. Then, submit this markdown file in Canvas. All teammates should complete the assignment in their own database, but you can troubleshoot together! Also, submit proof the data loaded in your Snowflake database (this can be a screenshot/query output).
-### Extract and Load (Airbyte) ###
+### Extract and Load (FiveTran) ###
 - Sign into fivetran
 - Click on 'Connections'
     - Click 'Add Connection'
