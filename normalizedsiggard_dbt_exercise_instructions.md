@@ -183,11 +183,7 @@ year_number
 from cte_date
 ```
 
-- The dbt_date macro comes from the below package. Create a packages.yml file in the same folder as your dbt_project.yml file. Paste this in the packages.yml file:
-```
-  - package: calogica/dbt_date
-    version: 0.9.1
-```
+- The dbt_date macro comes from the calogica/dbt_date package - we already installed this package in our packages.yml file. 
 - Then run `dbt deps`
 
 - Save the file, after you have done that, you can go to your terminal and type `dbt run -m dim_date` to build the model.
