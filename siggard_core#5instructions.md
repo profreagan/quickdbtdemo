@@ -42,6 +42,8 @@
 - Click 'Sync Now' in the top right corner
 - Wait for the sync to finish, login to Snowflake, check to see if you have a new schema in your database called `oliver_dw_source`
     - Confirm that the tables created and that they have data
+- Go back to fivetran, click on connectors on the left hand side, click your connector that you just set up
+    - Make sure the toggle on the top right is set to paused. If it's set to enabled, then click it and change it to paused.
 
 ### Transform (dbt) ###
 - Login to dbt Cloud
