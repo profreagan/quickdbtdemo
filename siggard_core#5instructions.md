@@ -13,7 +13,7 @@
 
 
 ## Assignment ##
-- Now, we are going to use a semi-normalized transactional database given to us by Oliver's. You are very familiar with this dataset! You are going to create an ELT process for Oliver's using Airbyte & dbt. Download this markdown file and open it in VSCode, then populate the empty "code" boxes below with the code you use to complete this assignment. Then, submit this markdown file in Canvas. All teammates should complete the assignment in their own database, but you can troubleshoot together! Also, submit proof the data loaded in your Snowflake database (this can be a screenshot/query output).
+- Now, we are going to use a semi-normalized transactional database given to us by Oliver's. You are very familiar with this dataset! You are going to create an ELT process for Oliver's using Airbyte & dbt. To submit this assignment, make your GitHub repo public so we can see all your different dbt files then submit the link to your GitHub repo along with proof of all the data loaded in your Snowflake database (this can be a screenshot/query output of each table).
 
 (Please note: you can access a copy of the below database on stairway so you can see the transactional database easier - but you'll use the copy of Oliver's on the Amazon RDS instance. username: 5360_student password: datawarehousing)
 ### Extract and Load (FiveTran) ###
@@ -58,93 +58,45 @@
 - Call this new folder `oliver`
 - Right click on oliver and create a new file. Name this file `_src_oliver.yml`
     - In this file we will add all of the sources for Oliver's tables
-- Populate the code that we will use in this file below: 
-```
-
-```
-
 
 #### dim customer ####
 - Create a new file inside of the oliver directory called `oliver_dim_customer.sql`
-- Populate the code that we will use in this file below: 
-```
-
-```
-
 - Save the file, after you have done that, you can go to your terminal and type `dbt run -m oliver_dim_customer` to build the model.
     - Go to Snowflake to see the newly created table!
 
 #### dim date ####
 - Create a new file inside of the oliver directory called `oliver_dim_date.sql`
-- Populate the code that we will use in this file below: 
-```
-
-```
-
 - Save the file, after you have done that, you can go to your terminal and type `dbt run -m oliver_dim_date` to build the model. Go to Snowflake to see the newly created table!
 
 #### dim_employee ####
 - Create a new file inside of the oliver directory called `oliver_dim_employee.sql`
-- Populate the code that we will use in this file below: 
-```
-
-```
-
 - Save the file and build the model. Go to Snowflake to see the newly created table! 
 
 #### dim product ####
 - Create a new file inside of the oliver directory called `oliver_dim_product.sql`
-- Populate the code that we will use in this file below: 
-
-
-```
-
-```
-
 - Save the file and build the model. Go to Snowflake to see the newly created table!
 
 
 #### dim store ####
 - Create a new file inside of the oliver directory called `oliver_dim_store.sql`
-- Populate the code that we will use in this file below: 
-```
-
-
-```
-
 - Save the file and build the model. Go to Snowflake to see the newly created table!
 
 
 #### fact sales ####
 - Create a new file inside of the oliver directory called `fact_sales.sql`
-- Populate the code that we will use in this file below: 
-```
-
-
-```
-
 - Save the file and build the model. Go to Snowflake to see the newly created table!
 
 
 
 #### schema yaml file ####
 - Create a new file inside the oliver directory called `_schema_oliver.yml`
-- This file contains metadata about the models you build. Hint: check out the exercise to help you create this file. 
-- Populate the code that we will use in this file below: 
-```
-
-```
-
+- This file contains metadata about the models you build. Hint: check out the exercise to help you create this file.
+  
 ## Create a semantic layer model 
 - Create a model that can query from the data warehouse we just built and reference upstream models.
 - Create a new file called `sales.sql` inside of the oliver directory.
 - Basically, your code will create a new table that will be a semantic layer that is easy for consumption. The table should include key information that an analyst could easily pull from to run quick analysis. 
-- This model should use 'ref' instead of source in the from statements. This will allow dbt to build lineage dag of the model dependencies:
-- Populate the code that we will use in this file below: 
-```
-
-```
-
+- This model should use 'ref' instead of source in the from statements. This will allow dbt to build lineage dag of the model dependencies.
 ## View Lineage and Generate Docs ##
 - View Lineage for your semantic layer model by clicking on the model in the file explorer and clicking lineage on the bottom window.
     - If you did not create the semantic layer model, then select your fact model.
