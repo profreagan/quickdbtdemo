@@ -14,6 +14,8 @@
 
 ## Assignment ##
 - Now, we are going to use a semi-normalized transactional database given to us by Oliver's. You are very familiar with this dataset! You are going to create an ELT process for Oliver's using Airbyte & dbt. Download this markdown file and open it in VSCode, then populate the empty "code" boxes below with the code you use to complete this assignment. Then, submit this markdown file in Canvas. All teammates should complete the assignment in their own database, but you can troubleshoot together! Also, submit proof the data loaded in your Snowflake database (this can be a screenshot/query output).
+
+(Please note: you can access a copy of the below database on stairway so you can see the transactional database easier - but you'll use the copy of Oliver's on the Amazon RDS instance. username: 5360_student password: datawarehousing)
 ### Extract and Load (FiveTran) ###
 - Sign into fivetran
 - Click on 'Connections'
