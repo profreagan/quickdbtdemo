@@ -13,7 +13,7 @@
 
 
 ## Assignment ##
-- Now, we are going to use a semi-normalized transactional database given to us by Oliver's. You are very familiar with this dataset! You are going to create an ELT process for Oliver's using Airbyte & dbt. To submit this assignment, make your GitHub repo public so we can see all your different dbt files then submit the link to your GitHub repo along with proof of all the data loaded in your Snowflake database (this can be a screenshot/query output of each table).
+- Now, we are going to use a semi-normalized transactional database given to us by Oliver's. You are very familiar with this dataset! You are going to create an ELT process for Oliver's using Airbyte & dbt. To submit this assignment, share your repo with 'easton-martin' by adding Easton as a collaborator so he can see all your different dbt files. Then, in Canvas,  submit proof with all the data loaded in your Snowflake database (this can be a screenshot/query output of each table).
 
 (Please note: you can access a copy of the below database on stairway so you can see the transactional database easier - but you'll use the copy of Oliver's on the Amazon RDS instance. username: 5360_student password: datawarehousing)
 ### Extract and Load (FiveTran) ###
