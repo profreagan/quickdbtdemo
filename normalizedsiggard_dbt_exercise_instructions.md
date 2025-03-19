@@ -245,7 +245,7 @@ models:
 - Create a model that can query from the data warehouse we just built and reference upstream models.
 - Create a new file called `claims.sql` inside of the insurance directory.
 
-  '''
+```
 
   {{ config(
     materialized = 'table',
@@ -276,7 +276,7 @@ LEFT JOIN {{ ref('dim_policy') }} p
 LEFT JOIN {{ ref('dim_date') }} d
     ON f.date_key = d.date_key
 
-    '''
+```
 
 ## View Lineage and Generate Docs ##
 - View Lineage for your semantic layer model by clicking on the model in the file explorer and clicking lineage on the bottom window.
